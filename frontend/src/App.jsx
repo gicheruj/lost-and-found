@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -12,10 +13,11 @@ const ProtectedRoute = ({ children }) => {
 }
 
 function App() {
+  const [showPostModal, setShowPostModal] = useState(false)
   return (
     <Router>
       <div className="app">
-        <Navbar />
+        <Navbar onPostClick={() => setShowPostModal(true)} />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
